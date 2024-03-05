@@ -1,0 +1,17 @@
+# Dependencias npm
+/node_modules
+
+# Directorio de construcción
+/build
+/dist
+
+# Archivos de configuración locales
+.env.local
+
+# Archivos generados por IDEs
+.vscode
+.idea
+
+# Archivos de respaldo
+*.bak
+*.log
