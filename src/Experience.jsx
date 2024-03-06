@@ -32,7 +32,7 @@ const Experience = () => {
 				<meshStandardMaterial color = "MediumTurquoise" />
 			</mesh>
 			{/* Piso  */}
-			<mesh ref = {groundRef} position={[0,-4, 0]}>
+			<mesh ref = {groundRef} position={[0,-2, 0]}>
 				<boxGeometry args = {[10,0.5,100]} />
 				<meshStandardMaterial color={[24/255, 52/255, 14/255]}/>
 			</mesh>	
@@ -40,7 +40,7 @@ const Experience = () => {
 			{/* Torus */}
 			<mesh ref = {torusRef} position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0]}>
 				<torusGeometry args = {[3, 0.5, 40, 100]} />
-				<meshLambertMaterial color = "maroon" emissive={"black"} emissiveIntensity={0.1} reflectivity={1} fog/>
+				<meshLambertMaterial color = "maroon" emissive={"black"} emissiveIntensity={0.1} reflectivity={1} wireframe={true} wireframeLinewidth={0.5}/>
 			</mesh>
 		</>
 	)
