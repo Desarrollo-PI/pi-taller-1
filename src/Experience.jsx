@@ -1,25 +1,24 @@
 import { OrbitControls } from "@react-three/drei";
 import { useFrame} from "@react-three/fiber";
 import { useRef, useState } from "react";
-import { MeshDistanceMaterial, MeshPhongMaterial, RingGeometry } from "three";
+import { MeshToonMaterial , MeshPhongMaterial } from "three";
 
 const Experience = () => {
 	const boxRef = useRef(null);
 	const groundRef = useRef(null);
 	const torusRef = useRef(null);
 	const capsuleRef = useRef(null);
-	const [y, setY] = useState(0);
-	const [x, setX] = useState(0);
+	const coneRef = useRef(null);
+	const [contador, setContador] = useState(0);
 
 	const phongMaterial = new MeshPhongMaterial({color: "purple", emissive: "black", emissiveIntensity: 0.1, reflectivity: 1, wireframe: false, wireframeLinewidth: 1, specular: "gray", shininess: 30, flatShading: true});
 
 	useFrame((state, delta) => {
 		boxRef.current.rotation.y += 1 * delta;
-		setY(prevY => prevY + (2 * delta));
-		boxRef.current.position.y = Math.sin(y)/2;
-		// torusRef.current.rotation.y += 0.01;
-		setX(prevX => prevX + (2 * delta));
-		torusRef.current.position.x = Math.cos(x);
+		setContador(prevContador => prevContador + delta);
+		boxRef.current.position.y = Math.sin(contador * 2)/2;
+		torusRef.current.position.x = Math.cos(contador * 4) * 1.5;
+		torusRef.current.position.z = Math.sin(contador * 4) * 1.5;
 		capsuleRef.current.rotation.y += 0.01;
 	});
 
@@ -51,6 +50,12 @@ const Experience = () => {
 			<mesh ref = {capsuleRef} position={[0,8,20]}>
 				<capsuleGeometry args = {[5, 5, 8, 16]} />
 				<primitive object = {phongMaterial}/>
+			</mesh>
+
+			{/* Cone */}
+			<mesh ref = {coneRef} position={[0, 0, -10]}>
+				<coneGeometry args={[1, 2, 10]} />
+				<meshPhysicalMaterial color="red" />
 			</mesh>
 		</>
 	)
