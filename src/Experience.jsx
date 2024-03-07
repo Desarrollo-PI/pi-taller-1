@@ -20,6 +20,8 @@ const Experience = () => {
 		torusRef.current.position.x = Math.cos(contador * 4) * 1.5;
 		torusRef.current.position.z = Math.sin(contador * 4) * 1.5;
 		capsuleRef.current.rotation.y += 0.01;
+		capsuleRef.current.position.y = Math.sin(contador * 2) * 2 + 8;
+		coneRef.current.position.x = Math.sin(contador * 4) * 2;
 	});
 
 	return (
